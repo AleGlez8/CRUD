@@ -52,7 +52,7 @@ const ProductForm = () => {
 
   return (
     <div className="bakery-form">
-      <h2>Productos de Repostería</h2>
+      <h2><center>Productos</center></h2>
       <form>
         <label>ID:</label>
         <input

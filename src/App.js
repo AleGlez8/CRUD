@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductForm from './ProductForm'; // Asegúrate de ajustar la ruta según la estructura de tu proyecto
+import ProductForm from './ProductForm';
 
 function App() {
   return (
