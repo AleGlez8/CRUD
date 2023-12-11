@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ProductForm.css'; // Asegúrate de crear un archivo CSS para los estilos
+import './ProductForm.css';
 
 const ProductForm = () => {
   const [products, setProducts] = useState([]);
