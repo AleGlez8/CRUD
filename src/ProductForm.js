@@ -4,11 +4,12 @@ import './ProductForm.css';
 const ProductForm = () => {
   const [products, setProducts] = useState([]);
   const [newProduct, setNewProduct] = useState({
-    id: '',
+    id: 1,
     nombre: '',
     descripcion: '',
   });
   const [editingIndex, setEditingIndex] = useState(null);
+  const [idCounter, setIdCounter] = useState(1); // Inicia en 1 para el ID
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,19 +26,25 @@ const ProductForm = () => {
       updatedProducts[editingIndex] = newProduct;
       setProducts(updatedProducts);
       setEditingIndex(null);
+  
+      // No incrementar el ID después de editar
+      setNewProduct({
+        id: newProduct.id,
+        nombre: '',
+        descripcion: '',
+      });
     } else {
-      // Agregar nuevo producto
-      setProducts([...products, newProduct]);
+      // Agregar nuevo producto con ID autoincrementable
+      setProducts([...products, { ...newProduct, id: idCounter }]);
+      setNewProduct({
+        id: idCounter + 1, // Incrementa el contador solo para nuevos productos
+        nombre: '',
+        descripcion: '',
+      });
+      setIdCounter(idCounter + 1);
     }
-
-    // Limpiar el formulario
-    setNewProduct({
-      id: '',
-      nombre: '',
-      descripcion: '',
-    });
-  };
-
+  };  
+  
   const handleEditProduct = (index) => {
     const productToEdit = products[index];
     setNewProduct(productToEdit);
